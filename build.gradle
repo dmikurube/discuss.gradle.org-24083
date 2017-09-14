@@ -1,0 +1,29 @@
+plugins {
+    id "java"
+}
+apply plugin: "myjar"
+
+configurations {
+    target
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    target "junit:junit:4.+"
+}
+
+myJar {
+    targetResourceInto = "myjardir"
+}
+
+task localJar(type: Jar) {
+    into "localjardir", {
+        from {
+            project.configurations.target
+        }
+    }
+    with jar
+}
