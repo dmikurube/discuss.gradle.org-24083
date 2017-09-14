@@ -4,6 +4,7 @@ import org.gradle.api.tasks.bundling.Jar
 class MyJar extends Jar {
     MyJar() {
         // targetResourceInto is not configured yet...
+        with project.jar
     }
 
     @TaskAction @Override void copy() {
